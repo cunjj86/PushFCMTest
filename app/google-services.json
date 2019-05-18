@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "543140606751",
+    "firebase_url": "https://tjeit-pushtestljg.firebaseio.com",
+    "project_id": "tjeit-pushtestljg",
+    "storage_bucket": "tjeit-pushtestljg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543140606751:android:a0996c46786c4cf0",
+        "android_client_info": {
+          "package_name": "com.tje.pushfcmtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543140606751-36bc9r0oate74qbprdbftjvfc0n93qt6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tje.pushfcmtest",
+            "certificate_hash": "ccd8e4eeb059957bdf436347c788727784630205"
+          }
+        },
+        {
+          "client_id": "543140606751-sjg0rmvsn3jr9l4i8g5i3p3tsubnvg7s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7TeCRWX_4Adwakw7Qb7FdoPsn89yyiEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543140606751-sjg0rmvsn3jr9l4i8g5i3p3tsubnvg7s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
