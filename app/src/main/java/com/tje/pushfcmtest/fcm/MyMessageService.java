@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tje.pushfcmtest.MainActivity;
+import com.tje.pushfcmtest.R;
 
 public class MyMessageService extends FirebaseMessagingService {
 
@@ -55,7 +58,42 @@ public class MyMessageService extends FirebaseMessagingService {
 //        안드로이드 시스템 서비스는 여러가지의 종류를 내포. 이번에 쓰는건 알림이라고 반드시 강제 캐스팅
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+//        알림 내용을 구성해주는 Builder 변수 생성
+        NotificationCompat.Builder builder = null;
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            안드로이드 버젼 코드가 O 보다 크다 : 오레오 이상의 최신버젼이다.
+//            알림 채널을 만들어서 해당 채널에 푸시알림을 던져주는 방식
+
+        }
+        else {
+//            오레오 보다는 하위버젼이다. N 버젼 이하. ex) 누가, 마쉬멜로우, 롤리팝, 아이스크림샌드위치
+//             알림 채널이라는 기능이 없어서, 그냥 통일해서 쓰면 앱이 죽어버림. 위도 동일
+
+            builder = new NotificationCompat.Builder(this);
+
+//            푸시알림 상태창에 뜨는 아이콘 설정
+            builder.setSmallIcon(R.mipmap.ic_launcher);
+//            알림 제목 설정
+            builder.setContentTitle(title);
+//            알림 내용 설정
+            builder.setContentText(body);
+//            알림의 울리는 소리 설정
+            builder.setSound(defaultNotiUri);
+//            알림이 왔을때 울리는 진동의 패턴
+            builder.setVibrate(new long[1, 1000]);
+//            자동 삭제 되도록 설정
+            builder.setAutoCancel(true);
+//            알림을 누르면 어디로 갈지 아까 만든 pendingIntent 활용 지정
+            builder.setContentIntent(pendingIntent);
+
+//            실제로 알림을 띄우는 부분
+
+//            id를 일반 숫자로 고정하면, 항상 같은 id가 대입 -> 여러번 알림이 오면 기존 알림을 덮어씀.
+//            만약 여러개의 알림을 모두 띄우고 싶다면 그때 그때 다른 숫자가 들어가도록 코딩.
+            notificationManager.notify(1, builder.build());
+
+        }
 
     }
 }
